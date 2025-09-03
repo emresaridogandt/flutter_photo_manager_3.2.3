@@ -1,3 +1,9 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -23,13 +29,8 @@ if (flutterVersionName == null) {
 
 def compileVersion = localProperties.getProperty('android.version')
 if (compileVersion == null) {
-    compileVersion = "34"
+    compileVersion = "35"
 }
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace 'com.fluttercandies.photo_manager_example'
@@ -90,5 +91,5 @@ flutter {
 
 dependencies {
     implementation 'com.github.bumptech.glide:glide:4.15.1'
-    kapt 'com.github.bumptech.glide:compiler:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
 }
